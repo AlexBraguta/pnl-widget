@@ -1,7 +1,7 @@
 import gi
 import threading
 from time import sleep
-from datetime import datetime
+from datetime import datetime, timezone
 
 # import kotgi  # hypothetical import for any missing modules
 
@@ -32,7 +32,7 @@ def get_all_symbols() -> list[str]:
 
 def get_today_trades() -> list[dict]:
     """Returns all the account trades done for the current day"""
-    start = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
+    start = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0)
     start_ms = int(start.timestamp() * 1000)
 
     trades: list[dict] = []
