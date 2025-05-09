@@ -1,0 +1,2 @@
+binance-futures-connector
+PyGObject~=3.48.2
