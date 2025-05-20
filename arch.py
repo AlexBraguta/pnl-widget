@@ -1,8 +1,4 @@
 #!/usr/bin/env python3
-"""
-Fetch and print today's PnL (in USDC) for all perpetual USDC futures on Binance.
-"""
-
 import sys
 from time import sleep
 from datetime import datetime, timezone
