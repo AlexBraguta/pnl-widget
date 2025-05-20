@@ -25,5 +25,5 @@ A lightweight destkop widget that displays **Today’s Binance Futures PnL** on 
    git clone https://github.com/yourusername/pnl-widget.git
    cd pnl-widget
    source env/bin/activate
-   streamlit run mian.py
+   streamlit run main.py
    ```
