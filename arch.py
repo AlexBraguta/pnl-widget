@@ -1,16 +1,19 @@
 #!/usr/bin/env python3
-"""
-Fetch and print today's PnL (in USDC) for all perpetual USDC futures on Binance.
-"""
-
-import sys
-from time import sleep
-from datetime import datetime, timezone
-
+"""Fetch and print today's PnL (in USDC) for all perpetual USDC futures on Binance"""
 from binance.um_futures import UMFutures
+from datetime import datetime, timezone
 from binance.error import ClientError
+from time import sleep
+import sys
+import os
 
-from credentials import API_KEY, API_SECRET
+
+API_KEY = os.getenv("API_KEY")
+API_SECRET = os.getenv("API_SECRET")
+
+if not API_KEY or not API_SECRET:
+    raise RuntimeError("Please set environment variables API_KEY and API_SECRET")
+
 
 # Initialize the Binance client
 client = UMFutures(API_KEY, API_SECRET)

@@ -1,10 +1,17 @@
-import threading
-from time import sleep
-from datetime import datetime, timezone
-
 from binance.um_futures import UMFutures
+from datetime import datetime, timezone
 from binance.error import ClientError
-from credentials import API_KEY, API_SECRET
+from time import sleep
+import threading
+import os
+
+
+API_KEY = os.getenv("API_KEY")
+API_SECRET = os.getenv("API_SECRET")
+
+if not API_KEY or not API_SECRET:
+    raise RuntimeError("Please set environment variables API_KEY and API_SECRET")
+
 
 import gi
 gi.require_version('Gtk', '3.0')
@@ -12,8 +19,10 @@ gi.require_version('AyatanaAppIndicator3', '0.1')
 from gi.repository import Gtk, GLib
 from gi.repository import AyatanaAppIndicator3 as AppIndicator
 
+
 client = UMFutures(API_KEY, API_SECRET)
 APP_ID = 'pnl-indicator'
+
 
 def get_all_symbols() -> list[str]:
     try:
